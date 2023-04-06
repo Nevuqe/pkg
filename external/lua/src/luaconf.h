@@ -64,12 +64,6 @@
 #endif
 
 
-#if defined(LUA_USE_MACOSX)
-#define LUA_USE_POSIX
-#define LUA_USE_DLOPEN		/* MacOS does not need -ldl */
-#endif
-
-
 /*
 @@ LUAI_IS32INT is true iff 'int' has (at least) 32 bits.
 */

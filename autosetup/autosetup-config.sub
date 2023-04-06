@@ -635,10 +635,6 @@ case $basic_machine in
 		basic_machine=i586-pc
 		os=-msdosdjgpp
 		;;
-	dpx20 | dpx20-*)
-		basic_machine=rs6000-bull
-		os=-bosx
-		;;
 	dpx2*)
 		basic_machine=m68k-bull
 		os=-sysv3
@@ -1374,7 +1370,7 @@ case $os in
 	      | -hiux* | -knetbsd* | -mirbsd* | -netbsd* \
 	      | -bitrig* | -openbsd* | -solidbsd* | -libertybsd* \
 	      | -ekkobsd* | -kfreebsd* | -freebsd* | -riscix* | -lynxos* \
-	      | -bosx* | -nextstep* | -cxux* | -aout* | -elf* | -oabi* \
+		  | -cxux* | -aout* | -elf* | -oabi* \
 	      | -ptx* | -coff* | -ecoff* | -winnt* | -domain* | -vsta* \
 	      | -udi* | -eabi* | -lites* | -ieee* | -go32* | -aux* | -hcos* \
 	      | -chorusos* | -chorusrdb* | -cegcc* | -glidix* \
@@ -1408,7 +1404,7 @@ case $os in
 		os=`echo $os | sed -e 's|nto|nto-qnx|'`
 		;;
 	-sim | -xray | -os68k* | -v88r* \
-	      | -windows* | -osx | -abug | -netware* | -os9* \
+	      | -windows* | -abug | -netware* | -os9* \
 	      | -macos* | -mpw* | -magic* | -mmixware* | -mon960* | -lnews*)
 		;;
 	-mac*)
