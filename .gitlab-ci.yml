@@ -1,6 +1,0 @@
-build_test:
-  stage: build
-  script:
-    - ./configure
-    - make
-    - make check

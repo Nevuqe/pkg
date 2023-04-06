@@ -1,16 +1,13 @@
-pkg - a binary package manager for FreeBSD
-==========================================
+pkg
+===
 
-Known to fully work on (official package manager):
+`pkg` is the package manager for NQC. Forked from FreeBSD, it is a tool that enables users to easily manage software packages on their NQC systems. With pkg, users can install, update, and remove packages, as well as search for available packages and manage dependencies.
 
-- FreeBSD
-- DragonflyBSD
+If you have any questions or need support with pkg, you can contact Nevuqe at [hello@nevuqe.com](mailto:hello@nevuqe.com).
 
-Known to work on (has been ported to):
-
-- Linux
-- NetBSD/EdgeBSD
-- OSX
+For security-related enquiries, it is required that you encrypt your email using Nevuqe's PGP key,
+which can be found at [developer.nevuqe.com](https://developer.nevuqe.com/open-source/signing-key.asc), and
+please contact us at [security@nevuqe.com](mailto:security@nevuqe.com).
 
 Table of Contents:
 ------------------
@@ -36,9 +33,6 @@ Table of Contents:
 * [Installing from remote repositories](#pkginstall)
 * [Creating a package repository](#pkgcreate)
 * [Additional resources](#resources)
-
-Cirrus CI: (Linux, OSX, FreeBSD):
-[![Build Status](https://api.cirrus-ci.com/github/freebsd/pkg.svg)](https://cirrus-ci.com/github/freebsd/pkg)
 
 <a name="libpkg"></a>
 ### libpkg
@@ -466,22 +460,3 @@ installed packages:
 	# pkg repo .
 
 The above commands will create a repository of all packages on your system.
-
-Now you can share your repo with other people by letting them know of
-your repository :)
-
-<a name="resources"></a>
-### Additional resources
-
-* The Git repository of [pkg is hosted on GitHub][1]
-
-* The [pkg Wiki page][2]
-
-To contact us, you can find us in the **#pkg** channel on [Libera Chat IRC Network](https://libera.chat/).
-
-If you hit a bug when using pkg, you can always submit an issue in the
-[pkg issue tracker][3].
-
-[1]: https://github.com/freebsd/pkg
-[2]: http://wiki.freebsd.org/pkg
-[3]: https://github.com/freebsd/pkg/issues
