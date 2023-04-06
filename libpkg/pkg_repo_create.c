@@ -611,7 +611,11 @@ pkg_create_repo_read_pipe(int fd, digest_list_t *dlist, struct pkg_fts_item **it
 	return (EPKG_OK);
 }
 
+#ifdef __linux__
+typedef const FTSENT *FTSENTP;
+#else
 typedef const FTSENT *const FTSENTP;
+#endif
 
 static int
 fts_compare(FTSENTP *a, FTSENTP *b)

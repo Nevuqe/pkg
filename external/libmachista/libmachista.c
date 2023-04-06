@@ -36,6 +36,8 @@
 
 /* required for asprintf(3) on OS X */
 #define _DARWIN_C_SOURCE
+/* required for asprintf(3) on Linux */
+#define _GNU_SOURCE
 
 #include <stdbool.h>
 #include <stdio.h>

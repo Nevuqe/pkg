@@ -722,7 +722,7 @@ elf_note_analyse(Elf_Data *data, GElf_Ehdr *elfhdr, struct os_info *oi)
 	Elf_Note note;
 	char *src;
 	uint32_t gnu_abi_tag[4];
-	char *note_os[6] = {"FreeBSD", "NetBSD", "Syllable"};
+	char *note_os[6] = {"Linux", "GNU", "Solaris", "FreeBSD", "NetBSD", "Syllable"};
 	char *(*pnote_os)[6] = &note_os;
 	char invalid_osname[] = "Unknown";
 	uint32_t version = 0;

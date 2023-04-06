@@ -59,7 +59,18 @@ if {[cc-check-progs git] && [file exists .git] &&
 	define GITHASH -$gitrev[expr {$gitdirty eq {} ? {} : {-dirty}}]
 }
 
-define-feature static
+if {[string match *-linux* [get-define host]]} {
+	cc-with { -libs { -lbsd }} {
+		if {[cc-check-functions getprogname]} {
+			define-append EXTRA_LIBS -lbsd
+			define-feature libbsd
+		} else {
+			user-error "Unable to find libbsd"
+		}
+	}
+} else {
+	define-feature static
+}
 
 if {![opt-bool with-libarchive.pc]} {
 	cc-with { -libs { -larchive }} {
@@ -263,9 +274,16 @@ cc-check-includes bsd/err.h bsd/libutil.h bsd/readpassphrase.h \
 	bsd/stdio.h bsd/stdlib.h bsd/strlib.h bsd/string.h \
 	bsd/sys/cdefs.h bsd/sys/queue.h bsd/unistd.h
  
-define asan 1
-undefine HAVE_STATIC
-
+if {[opt-bool with-asan]} {
+	define-append ASAN_CFLAGS -O0 -ggdb -fsanitize=address
+	define-append ASAN_LDFLAGS -fsanitize=address
+	if {[string match *-linux* [get-define host]]} {
+		# ASAN depends on libdl for dlsym when building with GCC
+		define-append ASAN_LDFLAGS -ldl
+	}
+	define asan 1
+	undefine HAVE_STATIC
+}
 if {[opt-bool with-ubsan]} {
 	# Avoid alignment error when building with UBSan inside _mum_hash_avx2
 	define-append UBSAN_CFLAGS -D_MUM_UNALIGNED_ACCESS=0

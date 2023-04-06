@@ -160,3 +160,48 @@
 #define	LIBELF_CLASS		ELF_TARG_CLASS
 
 #endif
+
+/*
+ * GNU & Linux compatibility.
+ *
+ * `__linux__' is defined in an environment runs the Linux kernel and glibc.
+ * `__GNU__' is defined in an environment runs a GNU kernel (Hurd) and glibc.
+ * `__GLIBC__' is defined for an environment that runs glibc over a non-GNU
+ *     kernel such as GNU/kFreeBSD.
+ */
+
+#if defined(__linux__) || defined(__GNU__) || defined(__GLIBC__)
+
+#if defined(__linux__)
+
+#if    defined(__amd64__)
+
+#define LIBELF_ARCH             EM_X86_64
+#define LIBELF_BYTEORDER        ELFDATA2LSB
+#define LIBELF_CLASS            ELFCLASS64
+
+#elif   defined(__aarch64__)
+
+#define LIBELF_ARCH             EM_AARCH64
+#define LIBELF_BYTEORDER        ELFDATA2LSB
+#define LIBELF_CLASS            ELFCLASS64
+
+#elif  defined(__i386__)
+
+#define LIBELF_ARCH             EM_386
+#define LIBELF_BYTEORDER        ELFDATA2LSB
+#define LIBELF_CLASS            ELFCLASS32
+
+#endif
+
+#endif	/* defined(__linux__) */
+
+#if	LIBELF_CLASS == ELFCLASS32
+#define	Elf_Note		Elf32_Nhdr
+#elif   LIBELF_CLASS == ELFCLASS64
+#define	Elf_Note		Elf64_Nhdr
+#else
+#error  LIBELF_CLASS needs to be one of ELFCLASS32 or ELFCLASS64
+#endif
+
+#endif /* defined(__linux__) || defined(__GNU__) || defined(__GLIBC__) */

@@ -553,6 +553,8 @@ enum {
 	ELFOSABI__LAST__
 };
 
+#define	ELFOSABI_LINUX			ELFOSABI_GNU
+
 /*
  * ELF Machine types: (EM_*).
  */
@@ -2239,7 +2241,14 @@ _ELF_DEFINE_NT(NT_GNU_GOLD_VERSION, 4,					\
 _ELF_DEFINE_NT(NT_PRSTATUS,	1,	"Process status")		\
 _ELF_DEFINE_NT(NT_FPREGSET,	2,	"Floating point information")	\
 _ELF_DEFINE_NT(NT_PRPSINFO,	3,	"Process information")		\
-_ELF_DEFINE_NT(NT_AUXV,		6,	"Auxiliary vector")
+_ELF_DEFINE_NT(NT_AUXV,		6,	"Auxiliary vector")		\
+_ELF_DEFINE_NT(NT_PRXFPREG,	0x46E62B7FUL,				\
+	"Linux user_xfpregs structure")					\
+_ELF_DEFINE_NT(NT_PSTATUS,	10,	"Linux process status")		\
+_ELF_DEFINE_NT(NT_FPREGS,	12,	"Linux floating point regset")	\
+_ELF_DEFINE_NT(NT_PSINFO,	13,	"Linux process information")	\
+_ELF_DEFINE_NT(NT_LWPSTATUS,	16,	"Linux lwpstatus_t type")	\
+_ELF_DEFINE_NT(NT_LWPSINFO,	17,	"Linux lwpinfo_t type")
 
 #undef	_ELF_DEFINE_NT
 #define	_ELF_DEFINE_NT(N, V, DESCR)	N = V ,

@@ -41,6 +41,10 @@ if [ $(uname -s) = "Darwin" ]; then
   export CPPFLAGS="-I/usr/local/opt/libarchive/include"
   export CFLAGS="-I/usr/local/opt/libarchive/include"
   ./configure
+elif [ $(uname -s) = "Linux" ]; then
+  CFLAGS="-Wno-strict-aliasing -Wno-unused-result -Wno-unused-value" ./configure --with-libarchive.pc
+else
+  ./configure
 fi
 
 # Build quietly and in parallel first.  If the build fails re-run
