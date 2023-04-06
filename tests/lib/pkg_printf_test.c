@@ -779,7 +779,7 @@ ATF_TC_BODY(mode_val, tc)
 		{ 0100000, "---------- ", 0, PP_ALTERNATE_FORM1, }, /* Regular file */
 		{ 0120000, "l--------- ", 0, PP_ALTERNATE_FORM1, }, /* Sym-link */
 		{ 0140000, "s--------- ", 0, PP_ALTERNATE_FORM1, }, /* socket */
-		{ 0160000, "?--------- ", 0, PP_ALTERNATE_FORM1, }, /* whiteout */
+		{ 0160000, "w--------- ", 0, PP_ALTERNATE_FORM1, }, /* whiteout */
 
 		{ 0010000, "10000",  0, PP_EXPLICIT_PLUS, }, /* FIFO */
 		{ 0020000, "20000",  0, PP_EXPLICIT_PLUS, }, /* Char special */
