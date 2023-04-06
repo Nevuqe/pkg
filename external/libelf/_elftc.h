@@ -245,7 +245,7 @@ struct name {							\
 #ifndef	ELFTC_GETPROGNAME
 
 #if defined(__DragonFly__) || defined(__FreeBSD__) || defined(__minix) || \
-    defined(__NetBSD__) || defined(__APPLE__)
+    defined(__NetBSD__)
 
 #include <stdlib.h>
 
@@ -338,15 +338,12 @@ extern const char *__progname;
 #endif	/* __minix */
 
 
-#if defined(__NetBSD__) || defined(__APPLE__)
+#if defined(__NetBSD__)
 
 #include <sys/param.h>
-#ifndef __APPLE__
 #include <sys/endian.h>
-#else
 #include <machine/endian.h>
 #define	roundup2	roundup
-#endif
 
 #define	ELFTC_BYTE_ORDER			_BYTE_ORDER
 #define	ELFTC_BYTE_ORDER_LITTLE_ENDIAN		_LITTLE_ENDIAN

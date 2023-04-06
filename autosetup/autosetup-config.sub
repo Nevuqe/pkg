@@ -142,7 +142,7 @@ case $os in
 	-convergent* | -ncr* | -news | -32* | -3600* | -3100* | -hitachi* |\
 	-c[123]* | -convex* | -sun | -crds | -omron* | -dg | -ultra | -tti* | \
 	-harris | -dolphin | -highlevel | -gould | -cbm | -ns | -masscomp | \
-	-apple | -axis | -knuth | -cray | -microblaze*)
+	-axis | -knuth | -cray | -microblaze*)
 		os=
 		basic_machine=$1
 		;;
@@ -517,10 +517,6 @@ case $basic_machine in
 	asmjs)
 		basic_machine=asmjs-unknown
 		;;
-	aux)
-		basic_machine=m68k-apple
-		os=-aux
-		;;
 	balance)
 		basic_machine=ns32k-sequent
 		os=-dynix
@@ -620,10 +616,6 @@ case $basic_machine in
 	djgpp)
 		basic_machine=i586-pc
 		os=-msdosdjgpp
-		;;
-	dpx20 | dpx20-*)
-		basic_machine=rs6000-bull
-		os=-bosx
 		;;
 	dpx2*)
 		basic_machine=m68k-bull
@@ -1267,12 +1259,6 @@ case $basic_machine in
 	orion105)
 		basic_machine=clipper-highlevel
 		;;
-	mac | mpw | mac-mpw)
-		basic_machine=m68k-apple
-		;;
-	pmac | pmac-mpw)
-		basic_machine=powerpc-apple
-		;;
 	*-unknown)
 		# Make sure to match an already-canonicalized machine name.
 		;;
@@ -1333,7 +1319,7 @@ case $os in
 	      | -hiux* | -knetbsd* | -mirbsd* | -netbsd* \
 	      | -bitrig* | -openbsd* | -solidbsd* | -libertybsd* \
 	      | -ekkobsd* | -kfreebsd* | -freebsd* | -riscix* | -lynxos* \
-	      | -bosx* | -nextstep* | -cxux* | -aout* | -elf* | -oabi* \
+		  | -cxux* | -aout* | -elf* | -oabi* \
 	      | -ptx* | -coff* | -ecoff* | -winnt* | -domain* | -vsta* \
 	      | -udi* | -eabi* | -lites* | -ieee* | -go32* | -aux* | -hcos* \
 	      | -chorusos* | -chorusrdb* | -cegcc* | -glidix* \
@@ -1366,7 +1352,7 @@ case $os in
 		os=`echo $os | sed -e 's|nto|nto-qnx|'`
 		;;
 	-sim | -xray | -os68k* | -v88r* \
-	      | -windows* | -osx | -abug | -netware* | -os9* \
+	      | -windows* | -abug | -netware* | -os9* \
 	      | -macos* | -mpw* | -magic* | -mmixware* | -mon960* | -lnews*)
 		;;
 	-mac*)
@@ -1653,9 +1639,6 @@ case $basic_machine in
 	*-*bug)
 		os=-coff
 		;;
-	*-apple)
-		os=-macos
-		;;
 	*-atari*)
 		os=-mint
 		;;
@@ -1719,14 +1702,8 @@ case $basic_machine in
 			-vxsim* | -vxworks* | -windiss*)
 				vendor=wrs
 				;;
-			-aux*)
-				vendor=apple
-				;;
 			-hms*)
 				vendor=hitachi
-				;;
-			-mpw* | -macos*)
-				vendor=apple
 				;;
 			-*mint | -mint[0-9]* | -*MiNT | -MiNT[0-9]*)
 				vendor=atari

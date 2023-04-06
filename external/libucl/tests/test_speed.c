@@ -31,12 +31,6 @@
 #include <fcntl.h>
 #include <time.h>
 
-#ifdef __APPLE__
-#ifdef HAVE_MACH_MACH_TIME_H
-#include <mach/mach_time.h>
-#endif
-#endif
-
 #include "ucl.h"
 
 static double
@@ -44,14 +38,10 @@ get_ticks (void)
 {
 	double res;
 
-#ifdef __APPLE__
-	res = mach_absolute_time () / 1000000000.;
-#else
 	struct timespec ts;
 	clock_gettime (CLOCK_MONOTONIC, &ts);
 
 	res = (double)ts.tv_sec + ts.tv_nsec / 1000000000.;
-#endif
 
 	return res;
 }

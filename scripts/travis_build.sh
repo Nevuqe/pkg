@@ -36,12 +36,7 @@
 set -x
 set -e
 
-if [ $(uname -s) = "Darwin" ]; then
-  export LDFLAGS="-L/usr/local/opt/libarchive/lib"
-  export CPPFLAGS="-I/usr/local/opt/libarchive/include"
-  export CFLAGS="-I/usr/local/opt/libarchive/include"
-  ./configure
-elif [ $(uname -s) = "Linux" ]; then
+if [ $(uname -s) = "Linux" ]; then
   CFLAGS="-Wno-strict-aliasing -Wno-unused-result -Wno-unused-value" ./configure --with-libarchive.pc
 else
   ./configure
