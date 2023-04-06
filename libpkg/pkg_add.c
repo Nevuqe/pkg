@@ -295,19 +295,12 @@ fill_timespec_buf(const struct stat *aest, struct timespec tspec[2])
 	tspec[1].tv_sec = aest->st_mtim.tv_sec;
 	tspec[1].tv_nsec = aest->st_mtim.tv_nsec;
 #else
-# if defined(_DARWIN_C_SOURCE) || defined(__APPLE__)
-	tspec[0].tv_sec = aest->st_atimespec.tv_sec;
-	tspec[0].tv_nsec = aest->st_atimespec.tv_nsec;
-	tspec[1].tv_sec = aest->st_mtimespec.tv_sec;
-	tspec[1].tv_nsec = aest->st_mtimespec.tv_nsec;
-# else
 	/* Portable unix version */
 	tspec[0].tv_sec = aest->st_atime;
 	tspec[0].tv_nsec = 0;
 	tspec[1].tv_sec = aest->st_mtime;
 	tspec[1].tv_nsec = 0;
 # endif
-#endif
 }
 
 static void
@@ -1581,15 +1574,10 @@ pkg_add_fromdir(struct pkg *pkg, const char *src)
 		d->time[0] = st.st_atim;
 		d->time[1] = st.st_mtim;
 #else
-#if defined(_DARWIN_C_SOURCE) || defined(__APPLE__)
-		d->time[0] = st.st_atimespec;
-		d->time[1] = st.st_mtimespec;
-#else
 		d->time[0].tv_sec = st.st_atime;
 		d->time[0].tv_nsec = 0;
 		d->time[1].tv_sec = st.st_mtime;
 		d->time[1].tv_nsec = 0;
-#endif
 #endif
 
 		if (create_dir(pkg, d, &tempdirs) == EPKG_FATAL) {
@@ -1643,15 +1631,10 @@ pkg_add_fromdir(struct pkg *pkg, const char *src)
 		f->time[0] = st.st_atim;
 		f->time[1] = st.st_mtim;
 #else
-#if defined(_DARWIN_C_SOURCE) || defined(__APPLE__)
-		f->time[0] = st.st_atimespec;
-		f->time[1] = st.st_mtimespec;
-#else
 		f->time[0].tv_sec = st.st_atime;
 		f->time[0].tv_nsec = 0;
 		f->time[1].tv_sec = st.st_mtime;
 		f->time[1].tv_nsec = 0;
-#endif
 #endif
 
 		if (S_ISLNK(st.st_mode)) {

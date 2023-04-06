@@ -20267,9 +20267,6 @@ static void output_reset(ShellState *p){
       const char *zXdgOpenCmd =
 #if defined(_WIN32)
       "start";
-#elif defined(__APPLE__)
-      "open";
-#else
       "xdg-open";
 #endif
       char *zCmd;

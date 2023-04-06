@@ -148,7 +148,7 @@ case $os in
 	-convergent* | -ncr* | -news | -32* | -3600* | -3100* | -hitachi* |\
 	-c[123]* | -convex* | -sun | -crds | -omron* | -dg | -ultra | -tti* | \
 	-harris | -dolphin | -highlevel | -gould | -cbm | -ns | -masscomp | \
-	-apple | -axis | -knuth | -cray | -microblaze*)
+	-axis | -knuth | -cray | -microblaze*)
 		os=
 		basic_machine=$1
 		;;
@@ -522,10 +522,6 @@ case $basic_machine in
 		;;
 	asmjs)
 		basic_machine=asmjs-unknown
-		;;
-	aux)
-		basic_machine=m68k-apple
-		os=-aux
 		;;
 	balance)
 		basic_machine=ns32k-sequent
@@ -1301,12 +1297,6 @@ case $basic_machine in
 	orion105)
 		basic_machine=clipper-highlevel
 		;;
-	mac | mpw | mac-mpw)
-		basic_machine=m68k-apple
-		;;
-	pmac | pmac-mpw)
-		basic_machine=powerpc-apple
-		;;
 	*-unknown)
 		# Make sure to match an already-canonicalized machine name.
 		;;
@@ -1700,9 +1690,6 @@ case $basic_machine in
 	*-*bug)
 		os=-coff
 		;;
-	*-apple)
-		os=-macos
-		;;
 	*-atari*)
 		os=-mint
 		;;
@@ -1766,14 +1753,8 @@ case $basic_machine in
 			-vxsim* | -vxworks* | -windiss*)
 				vendor=wrs
 				;;
-			-aux*)
-				vendor=apple
-				;;
 			-hms*)
 				vendor=hitachi
-				;;
-			-mpw* | -macos*)
-				vendor=apple
 				;;
 			-*mint | -mint[0-9]* | -*MiNT | -MiNT[0-9]*)
 				vendor=atari

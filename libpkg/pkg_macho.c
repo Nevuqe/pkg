@@ -223,7 +223,7 @@ host_cpu_type(cpu_type_t *result)
 /**
  * Fetch the OS name and major version.
  *
- * @param osname On success, the OS name (e.g. Darwin).
+ * @param osname On success, the OS name (e.g. NQC).
  * @param sz The maximum number of bytes to be written to osname.
  * @param major_version On success, the major version of the host.
  */

@@ -718,16 +718,6 @@ if {[get-define CXX] ne "false"} {
 }
 msg-result "Build C compiler...[get-define CC_FOR_BUILD]"
 
-# On Darwin, we prefer to use -g0 to avoid creating .dSYM directories
-# but some compilers may not support it, so test here.
-switch -glob -- [get-define host] {
-	*-*-darwin* {
-		if {[cctest -cflags {-g0}]} {
-			define cc-default-debug -g0
-		}
-	}
-}
-
 if {![cc-check-includes stdlib.h]} {
 	user-error "Compiler does not work. See config.log"
 }
