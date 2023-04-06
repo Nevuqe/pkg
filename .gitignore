@@ -95,3 +95,6 @@ scripts/sbin/pkg2ng
 /tests/plist
 /tests/ssh
 /tests/utils
+
+# macOS
+.DS_Store
