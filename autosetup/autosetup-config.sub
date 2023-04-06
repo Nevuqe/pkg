@@ -291,7 +291,6 @@ case $basic_machine in
 	| ns16k | ns32k \
 	| open8 | or1k | or1knd | or32 \
 	| pdp10 | pj | pjl \
-	| powerpc | powerpc64 | powerpc64le | powerpcle \
 	| pru \
 	| pyramid \
 	| riscv32 | riscv64 \
@@ -419,7 +418,6 @@ case $basic_machine in
 	| or1k*-* \
 	| orion-* \
 	| pdp10-* | pdp11-* | pj-* | pjl-* | pn-* | power-* \
-	| powerpc-* | powerpc64-* | powerpc64le-* | powerpcle-* \
 	| pru-* \
 	| pyramid-* \
 	| riscv32-* | riscv64-* \
@@ -521,10 +519,6 @@ case $basic_machine in
 		basic_machine=ns32k-sequent
 		os=-dynix
 		;;
-	bluegene*)
-		basic_machine=powerpc-ibm
-		os=-cnk
-		;;
 	c54x-*)
 		basic_machine=tic54x-`echo "$basic_machine" | sed 's/^[^-]*-//'`
 		;;
@@ -620,14 +614,6 @@ case $basic_machine in
 	dpx2*)
 		basic_machine=m68k-bull
 		os=-sysv3
-		;;
-	e500v[12])
-		basic_machine=powerpc-unknown
-		os=$os"spe"
-		;;
-	e500v[12]-*)
-		basic_machine=powerpc-`echo "$basic_machine" | sed 's/^[^-]*-//'`
-		os=$os"spe"
 		;;
 	ebmon29k)
 		basic_machine=a29k-amd
@@ -810,10 +796,6 @@ case $basic_machine in
 		basic_machine=m68k-rom68k
 		os=-coff
 		;;
-	morphos)
-		basic_machine=powerpc-unknown
-		os=-morphos
-		;;
 	moxiebox)
 		basic_machine=moxie-unknown
 		os=-moxiebox
@@ -919,10 +901,6 @@ case $basic_machine in
 	openrisc | openrisc-*)
 		basic_machine=or32-unknown
 		;;
-	os400)
-		basic_machine=powerpc-ibm
-		os=-os400
-		;;
 	OSE68000 | ose68000)
 		basic_machine=m68000-ericsson
 		os=-ose
@@ -982,27 +960,6 @@ case $basic_machine in
 		basic_machine=pn-gould
 		;;
 	power)	basic_machine=power-ibm
-		;;
-	ppc | ppcbe)	basic_machine=powerpc-unknown
-		;;
-	ppc-* | ppcbe-*)
-		basic_machine=powerpc-`echo "$basic_machine" | sed 's/^[^-]*-//'`
-		;;
-	ppcle | powerpclittle)
-		basic_machine=powerpcle-unknown
-		;;
-	ppcle-* | powerpclittle-*)
-		basic_machine=powerpcle-`echo "$basic_machine" | sed 's/^[^-]*-//'`
-		;;
-	ppc64)	basic_machine=powerpc64-unknown
-		;;
-	ppc64-*) basic_machine=powerpc64-`echo "$basic_machine" | sed 's/^[^-]*-//'`
-		;;
-	ppc64le | powerpc64little)
-		basic_machine=powerpc64le-unknown
-		;;
-	ppc64le-* | powerpc64little-*)
-		basic_machine=powerpc64le-`echo "$basic_machine" | sed 's/^[^-]*-//'`
 		;;
 	ps2)
 		basic_machine=i386-ibm
