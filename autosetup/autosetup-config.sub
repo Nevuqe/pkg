@@ -114,17 +114,11 @@ esac
 # Here we must recognize all the valid KERNEL-OS combinations.
 maybe_os=`echo "$1" | sed 's/^\(.*\)-\([^-]*-[^-]*\)$/\2/'`
 case $maybe_os in
-  nto-qnx* | linux-gnu* | linux-android* | linux-dietlibc | linux-newlib* | \
-  linux-musl* | linux-uclibc* | uclinux-uclibc* | uclinux-gnu* | kfreebsd*-gnu* | \
-  knetbsd*-gnu* | netbsd*-gnu* | netbsd*-eabi* | \
+  nto-qnx* | netbsd*-eabi* | \
   kopensolaris*-gnu* | cloudabi*-eabi* | \
   storm-chaos* | os2-emx* | rtmk-nova*)
     os=-$maybe_os
     basic_machine=`echo "$1" | sed 's/^\(.*\)-\([^-]*-[^-]*\)$/\1/'`
-    ;;
-  android-linux)
-    os=-linux-android
-    basic_machine=`echo "$1" | sed 's/^\(.*\)-\([^-]*-[^-]*\)$/\1/'`-unknown
     ;;
   *)
     basic_machine=`echo "$1" | sed 's/-[^-]*$//'`
@@ -527,14 +521,6 @@ case $basic_machine in
 		basic_machine=ns32k-sequent
 		os=-dynix
 		;;
-	blackfin)
-		basic_machine=bfin-unknown
-		os=-linux
-		;;
-	blackfin-*)
-		basic_machine=bfin-`echo "$basic_machine" | sed 's/^[^-]*-//'`
-		os=-linux
-		;;
 	bluegene*)
 		basic_machine=powerpc-ibm
 		os=-cnk
@@ -784,14 +770,6 @@ case $basic_machine in
 	leon-*|leon[3-9]-*)
 		basic_machine=sparc-`echo "$basic_machine" | sed 's/-.*//'`
 		;;
-	m68knommu)
-		basic_machine=m68k-unknown
-		os=-linux
-		;;
-	m68knommu-*)
-		basic_machine=m68k-`echo "$basic_machine" | sed 's/^[^-]*-//'`
-		os=-linux
-		;;
 	magnum | m3230)
 		basic_machine=mips-mips
 		os=-sysv
@@ -866,10 +844,6 @@ case $basic_machine in
 	netbsd386)
 		basic_machine=i386-unknown
 		os=-netbsd
-		;;
-	netwinder)
-		basic_machine=armv4l-rebel
-		os=-linux
 		;;
 	news | news700 | news800 | news900)
 		basic_machine=m68k-sony
@@ -964,14 +938,6 @@ case $basic_machine in
 	paragon)
 		basic_machine=i860-intel
 		os=-osf
-		;;
-	parisc)
-		basic_machine=hppa-unknown
-		os=-linux
-		;;
-	parisc-*)
-		basic_machine=hppa-`echo "$basic_machine" | sed 's/^[^-]*-//'`
-		os=-linux
 		;;
 	pbd)
 		basic_machine=sparc-tti
@@ -1170,10 +1136,6 @@ case $basic_machine in
 		basic_machine=t90-cray
 		os=-unicos
 		;;
-	tile*)
-		basic_machine=$basic_machine-unknown
-		os=-linux-gnu
-		;;
 	tx39)
 		basic_machine=mipstx39-unknown
 		;;
@@ -1338,9 +1300,6 @@ case $os in
 	-unixware*)
 		os=-sysv4.2uw
 		;;
-	-gnu/linux*)
-		os=`echo $os | sed -e 's|gnu/linux|linux-gnu|'`
-		;;
 	# es1800 is here to avoid being matched by es* (a different OS)
 	-es1800*)
 		os=-ose
@@ -1365,13 +1324,12 @@ case $os in
 	      | -udi* | -eabi* | -lites* | -ieee* | -go32* | -aux* | -hcos* \
 	      | -chorusos* | -chorusrdb* | -cegcc* | -glidix* \
 	      | -cygwin* | -msys* | -pe* | -psos* | -moss* | -proelf* | -rtems* \
-	      | -midipix* | -mingw32* | -mingw64* | -linux-gnu* | -linux-android* \
-	      | -linux-newlib* | -linux-musl* | -linux-uclibc* \
+	      | -midipix* | -mingw32* | -mingw64* \
 	      | -uxpv* | -beos* | -mpeix* | -udk* | -moxiebox* \
 	      | -interix* | -uwin* | -mks* | -rhapsody* | -darwin* \
 	      | -openstep* | -oskit* | -conix* | -pw32* | -nonstopux* \
 	      | -storm-chaos* | -tops10* | -tenex* | -tops20* | -its* \
-	      | -os2* | -vos* | -palmos* | -uclinux* | -nucleus* \
+	      | -os2* | -vos* | -palmos* | -nucleus* \
 	      | -morphos* | -superux* | -rtmk* | -windiss* \
 	      | -powermax* | -dnix* | -nx6 | -nx7 | -sei* | -dragonfly* \
 	      | -skyos* | -haiku* | -rdos* | -toppers* | -drops* | -es* \
@@ -1399,12 +1357,6 @@ case $os in
 		;;
 	-mac*)
 		os=`echo "$os" | sed -e 's|mac|macos|'`
-		;;
-	-linux-dietlibc)
-		os=-linux-dietlibc
-		;;
-	-linux*)
-		os=`echo $os | sed -e 's|linux|linux-gnu|'`
 		;;
 	-sunos5*)
 		os=`echo "$os" | sed -e 's|sunos5|solaris2|'`
@@ -1538,9 +1490,6 @@ case $basic_machine in
 		;;
 	*-acorn)
 		os=-riscix1.2
-		;;
-	arm*-rebel)
-		os=-linux
 		;;
 	arm*-semi)
 		os=-aout

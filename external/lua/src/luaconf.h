@@ -58,12 +58,6 @@
 #endif
 
 
-#if defined(LUA_USE_LINUX)
-#define LUA_USE_POSIX
-#define LUA_USE_DLOPEN		/* needs an extra library: -ldl */
-#endif
-
-
 /*
 @@ LUAI_IS32INT is true iff 'int' has (at least) 32 bits.
 */

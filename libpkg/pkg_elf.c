@@ -722,7 +722,7 @@ elf_note_analyse(Elf_Data *data, GElf_Ehdr *elfhdr, struct os_info *oi)
 	Elf_Note note;
 	char *src;
 	uint32_t gnu_abi_tag[4];
-	char *note_os[6] = {"Linux", "GNU", "Solaris", "FreeBSD", "NetBSD", "Syllable"};
+	char *note_os[6] = {"FreeBSD", "NetBSD", "Syllable"};
 	char *(*pnote_os)[6] = &note_os;
 	char invalid_osname[] = "Unknown";
 	uint32_t version = 0;
@@ -759,7 +759,6 @@ elf_note_analyse(Elf_Data *data, GElf_Ehdr *elfhdr, struct os_info *oi)
 		 * NT_GNU_ABI_TAG
 		 * Operating system (OS) ABI information.  The
 		 * desc field contains 4 words:
-		 * word 0: OS descriptor (ELF_NOTE_OS_LINUX, ELF_NOTE_OS_GNU, etc)
 		 * word 1: major version of the ABI
 		 * word 2: minor version of the ABI
 		 * word 3: subminor version of the ABI

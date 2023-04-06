@@ -216,14 +216,6 @@ struct name {							\
 #define	ELFTC_VCSID(ID)		__FBSDID(ID)
 #endif
 
-#if defined(__linux__) || defined(__GNU__) || defined(__GLIBC__)
-#if defined(__GNUC__)
-#define	ELFTC_VCSID(ID)		__asm__(".ident\t\"" ID "\"")
-#else
-#define	ELFTC_VCSID(ID)		/**/
-#endif
-#endif
-
 #if defined(__minix)
 #if defined(__GNUC__)
 #define	ELFTC_VCSID(ID)		__asm__(".ident\t\"" ID "\"")
@@ -315,11 +307,6 @@ extern const char *__progname;
 #define	ELFTC_BYTE_ORDER_BIG_ENDIAN		__BIG_ENDIAN
 
 #define	ELFTC_HAVE_MMAP				1
-
-/*
- * Debian GNU/Linux and Debian GNU/kFreeBSD do not have strmode(3).
- */
-#define	ELFTC_HAVE_STRMODE			0
 
 /* Whether we need to supply {be,le}32dec. */
 #define ELFTC_NEED_BYTEORDER_EXTENSIONS		1
