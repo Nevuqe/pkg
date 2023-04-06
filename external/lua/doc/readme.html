@@ -88,7 +88,7 @@ Lua is implemented in pure ANSI C and compiles unmodified in all known
 platforms that have an ANSI C compiler.
 Lua also compiles unmodified as C++.
 The instructions given below for building Lua are for Unix-like platforms,
-such as Linux and Mac OS X.
+such as Mac OS X.
 See also
 <A HREF="#other">instructions for other systems</A>
 and
@@ -121,7 +121,7 @@ The <TT>Makefile</TT> there controls both the build process and the installation
   The platforms currently supported are:
 <P>
 <P CLASS="display">
-   guess aix bsd c89 freebsd generic linux linux-readline macosx mingw posix solaris
+   guess aix bsd c89 freebsd generic macosx mingw posix solaris
 </P>
 <P>
   If your platform is listed, just do "<KBD>make xxx</KBD>", where xxx
@@ -142,12 +142,6 @@ and liblua.a (the library).
   after building Lua. This will run the interpreter and print its version.
 </OL>
 <P>
-If you're running Linux, try "<KBD>make linux-readline</KBD>" to build the interactive Lua interpreter with handy line-editing and history capabilities.
-If you get compilation errors,
-make sure you have installed the <TT>readline</TT> development package
-(which is probably named <TT>libreadline-dev</TT> or <TT>readline-devel</TT>).
-If you get link errors after that,
-then try "<KBD>make linux-readline MYLIBS=-ltermcap</KBD>".
 
 <H3>Installing Lua</H3>
 <P>
