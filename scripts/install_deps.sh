@@ -56,16 +56,3 @@ install_from_github() {
 
 	rm -rf "${distname}" "${distname}.tar.gz"
 }
-
-if [ $(uname -s) = "Darwin" ]; then
-	brew install libarchive kyua coreutils
-elif [ $(uname -s) = "Linux" ]; then
-	install_from_github atf 0.21
-	install_from_github lutok 0.4
-	install_from_github kyua 0.12
-	if [ `id -u` -eq 0 ]; then
-		ldconfig
-	else
-		sudo ldconfig
-	fi
-fi
