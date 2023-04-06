@@ -199,9 +199,7 @@ _mum_le16 (uint16_t v) {
    unroll factor greatly affects the hashing speed.  We prefer the
    speed.  */
 #ifndef _MUM_UNROLL_FACTOR_POWER
-#if defined(__PPC64__) && !defined(MUM_TARGET_INDEPENDENT_HASH)
-#define _MUM_UNROLL_FACTOR_POWER 3
-#elif defined(__aarch64__) && !defined(MUM_TARGET_INDEPENDENT_HASH)
+#if defined(__aarch64__) && !defined(MUM_TARGET_INDEPENDENT_HASH)
 #define _MUM_UNROLL_FACTOR_POWER 4
 #elif defined (MUM_V1) || defined (MUM_V2)
 #define _MUM_UNROLL_FACTOR_POWER 2
@@ -304,7 +302,7 @@ _mum_final (uint64_t h) {
 }
 
 #ifndef _MUM_UNALIGNED_ACCESS
-#if defined(__x86_64__) || defined(__i386__) || defined(__PPC64__) \
+#if defined(__x86_64__) || defined(__i386__) \
     || defined(__s390__) || defined(__m32c__) || defined(cris)     \
     || defined(__CR16__) || defined(__vax__) || defined(__m68k__) \
     || defined(__aarch64__) || defined(_M_AMD64) || defined(_M_IX86)

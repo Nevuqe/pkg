@@ -213,9 +213,6 @@ case "$UNAME_MACHINE:$UNAME_SYSTEM:$UNAME_RELEASE:$UNAME_VERSION" in
     *:SolidBSD:*:*)
 	echo "$UNAME_MACHINE"-unknown-solidbsd"$UNAME_RELEASE"
 	exit ;;
-    macppc:MirBSD:*:*)
-	echo powerpc-unknown-mirbsd"$UNAME_RELEASE"
-	exit ;;
     *:MirBSD:*:*)
 	echo "$UNAME_MACHINE"-unknown-mirbsd"$UNAME_RELEASE"
 	exit ;;
@@ -298,9 +295,6 @@ case "$UNAME_MACHINE:$UNAME_SYSTEM:$UNAME_RELEASE:$UNAME_VERSION" in
 	exit ;;
     *:z/VM:*:*)
 	echo s390-ibm-zvmoe
-	exit ;;
-    *:OS400:*:*)
-	echo powerpc-ibm-os400
 	exit ;;
     arm:RISC*:1.[012]*:*|arm:riscix:1.[012]*:*)
 	echo arm-acorn-riscix"$UNAME_RELEASE"
@@ -446,18 +440,6 @@ EOF
 	    { echo "$SYSTEM_NAME"; exit; }
 	echo mips-mips-riscos"$UNAME_RELEASE"
 	exit ;;
-    Motorola:PowerMAX_OS:*:*)
-	echo powerpc-motorola-powermax
-	exit ;;
-    Motorola:*:4.3:PL8-*)
-	echo powerpc-harris-powermax
-	exit ;;
-    Night_Hawk:*:*:PowerMAX_OS | Synergy:PowerMAX_OS:*:*)
-	echo powerpc-harris-powermax
-	exit ;;
-    Night_Hawk:Power_UNIX:*:*)
-	echo powerpc-harris-powerunix
-	exit ;;
     m88k:CX/UX:7*:*)
 	echo m88k-harris-cxux7
 	exit ;;
@@ -523,7 +505,6 @@ EOF
 			{
 			if (!__power_pc())
 				exit(1);
-			puts("powerpc-ibm-aix3.2.5");
 			exit(0);
 			}
 EOF
@@ -543,8 +524,6 @@ EOF
 	IBM_CPU_ID=`/usr/sbin/lsdev -C -c processor -S available | sed 1q | awk '{ print $1 }'`
 	if /usr/sbin/lsattr -El "$IBM_CPU_ID" | grep ' POWER' >/dev/null 2>&1; then
 		IBM_ARCH=rs6000
-	else
-		IBM_ARCH=powerpc
 	fi
 	if [ -x /usr/bin/lslpp ] ; then
 		IBM_REV=`/usr/bin/lslpp -Lqc bos.rte.libc |
@@ -816,9 +795,6 @@ EOF
     amd64:CYGWIN*:*:* | x86_64:CYGWIN*:*:*)
 	echo x86_64-unknown-cygwin
 	exit ;;
-    prep*:SunOS:5.*:*)
-	echo powerpcle-unknown-solaris2"`echo "$UNAME_RELEASE"|sed -e 's/[^.]*//'`"
-	exit ;;
     *:GNU:*:*)
 	# the GNU system
 	echo "`echo "$UNAME_MACHINE"|sed -e 's,[-/].*$,,'`-unknown-$LIBC`echo "$UNAME_RELEASE"|sed -e 's,/.*$,,'`"
@@ -966,9 +942,6 @@ EOF
     rs6000:LynxOS:2.*:*)
 	echo rs6000-unknown-lynxos"$UNAME_RELEASE"
 	exit ;;
-    PowerPC:LynxOS:2.*:* | PowerPC:LynxOS:3.[01]*:* | PowerPC:LynxOS:4.[02]*:*)
-	echo powerpc-unknown-lynxos"$UNAME_RELEASE"
-	exit ;;
     SM[BE]S:UNIX_SV:*:*)
 	echo mips-dde-sysv"$UNAME_RELEASE"
 	exit ;;
@@ -1016,9 +989,6 @@ EOF
 	else
 		echo mips-unknown-sysv"$UNAME_RELEASE"
 	fi
-	exit ;;
-    BeBox:BeOS:*:*)	# BeOS running on hardware made by Be, PPC only.
-	echo powerpc-be-beos
 	exit ;;
     BePC:BeOS:*:*)	# BeOS running on Intel PC compatible.
 	echo i586-pc-beos
