@@ -398,7 +398,7 @@ exec_clean(int argc, char **argv)
 	if (!quiet)
 		printf("The cleanup will free %s\n", size);
 	if (!dry_run) {
-			if (query_yesno(false,
+			if (query_yesno(true,
 			  "\nProceed with cleaning the cache? ")) {
 				retcode = delete_dellist(cachefd, cachedir, &dl, tll_length(dl));
 			}

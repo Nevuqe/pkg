@@ -809,7 +809,7 @@ event_callback(void *data, struct pkg_event *ev)
 	case PKG_EVENT_QUERY_YESNO:
 		return ( ev->e_query_yesno.deft ?
 			query_yesno(true, ev->e_query_yesno.msg, "[Y/n]") :
-			query_yesno(false, ev->e_query_yesno.msg, "[y/N]") );
+			query_yesno(true, ev->e_query_yesno.msg, "[y/N]") );
 		break;
 	case PKG_EVENT_QUERY_SELECT:
 		return query_select(ev->e_query_select.msg, ev->e_query_select.items,

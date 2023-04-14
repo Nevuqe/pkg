@@ -230,7 +230,7 @@ exec_delete(int argc, char **argv)
 			retcode = EXIT_SUCCESS;
 			goto cleanup;
 		}
-		rc = query_yesno(false,
+		rc = query_yesno(true,
 		            "\nProceed with deinstalling packages? ");
 	}
 	else

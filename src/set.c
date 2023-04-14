@@ -267,10 +267,10 @@ exec_set(int argc, char **argv)
 		rc = yes;
 		if (!yes) {
 			if (pkg != NULL)
-				rc = query_yesno(false, "Change %S from %S to %S for %n-%v? ",
+				rc = query_yesno(true, "Change %S from %S to %S for %n-%v? ",
 						changed, oldvalue, newvalue, pkg, pkg);
 			else
-				rc = query_yesno(false, "Change %S from %S to %S for all dependencies? ",
+				rc = query_yesno(true, "Change %S from %S to %S for all dependencies? ",
 						changed, oldvalue, newvalue);
 		}
 		if (pkg != NULL && rc) {
@@ -299,11 +299,11 @@ exec_set(int argc, char **argv)
 					continue;
 				if (!rc) {
 					if (newautomatic)
-						rc = query_yesno(false,
+						rc = query_yesno(true,
 								"Mark %n-%v as automatically installed? ",
 								pkg, pkg);
 					else
-						rc = query_yesno(false,
+						rc = query_yesno(true,
 								"Mark %n-%v as not automatically installed? ",
 								pkg, pkg);
 				}
@@ -317,11 +317,11 @@ exec_set(int argc, char **argv)
 					continue;
 				if (!rc) {
 					if (newvital)
-						rc = query_yesno(false,
+						rc = query_yesno(true,
 								"Mark %n-%v as vital? ",
 								pkg, pkg);
 					else
-						rc = query_yesno(false,
+						rc = query_yesno(true,
 								"Mark %n-%v as not vital? ",
 								pkg, pkg);
 				}

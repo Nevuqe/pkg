@@ -235,7 +235,7 @@ exec_install(int argc, char **argv)
 			break;
 
 		if (!quiet) {
-			rc = query_yesno(false,
+			rc = query_yesno(true,
 			    "\nProceed with this action? ");
 		}
 
