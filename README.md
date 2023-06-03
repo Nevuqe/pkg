@@ -1,7 +1,7 @@
 pkg
 ===
 
-> :warning: **Notice**: Nevuqe is presently developing a new operating system consisting of a microkernel written entirely from scratch, with the userland based on the BSDs. Further development of NQC (and PKG) is being put on hold.
+> :heavy_exclamation_mark: **Notice**: Nevuqe is developing [Sunyata](https://nevuqe.com/research), a completely new operating system written from scratch - this project has replaced NQC (alongside PKG), and its subsequent development. Read more about Sunyata on the [Nevuqe Website](https://nevuqe.com). NQC/PKG are now archived projects.
 
 `pkg` is the package manager for NQC. Forked from FreeBSD, it is a tool that enables users to easily manage software packages on their NQC systems. With pkg, users can install, update, and remove packages, as well as search for available packages and manage dependencies.
 
